@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useEffect, useContext, useReducer, createContext } from "react";
 
 const AppContext = createContext(null);
