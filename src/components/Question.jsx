@@ -6,7 +6,10 @@ function Question({ ques, activeQuestion, handleNext, handlePrev }) {
   const { questions } = state;
   const { question, correct_answer: correctAnswer } = ques;
   return (
-    <Stack>
+    <Stack
+      p={4}
+      sx={{ background: "#fff", color: "#000", borderRadius: "10px" }}
+    >
       <Typography>{question}</Typography>
       <Typography>{correctAnswer}</Typography>
       <Button onClick={handlePrev} disabled={activeQuestion === 0}>
