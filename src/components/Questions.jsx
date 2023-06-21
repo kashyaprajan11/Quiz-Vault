@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Stack, Typography } from "@mui/material";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Question from "./Question";
 import { useAppContext } from "../context";
@@ -22,12 +23,15 @@ function Questions() {
   }
   return (
     <Stack>
-      <Question
-        ques={questions[activeQuestion]}
-        handleNext={handleNext}
-        handlePrev={handlePrev}
-        activeQuestion={activeQuestion}
-      />
+      <AnimatePresence mode="wait">
+        <Question
+          key={activeQuestion}
+          ques={questions[activeQuestion]}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+          activeQuestion={activeQuestion}
+        />
+      </AnimatePresence>
     </Stack>
   );
 }

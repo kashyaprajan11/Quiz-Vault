@@ -1,7 +1,6 @@
 import { Stack } from "@mui/material";
 
 import Questions from "./components/Questions";
-import ParticlesContainer from "./components/ParticlesContainer";
 
 function App() {
   return (
@@ -11,8 +10,6 @@ function App() {
       sx={{ minHeight: "100vh", height: "100%" }}
     >
       <Questions />
-      //Todo: Creating error while rendering
-      {/* <ParticlesContainer /> */}
     </Stack>
   );
 }

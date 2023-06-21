@@ -1,14 +1,24 @@
 import { Stack, Typography, Button } from "@mui/material";
+import { motion } from "framer-motion";
 import { useAppContext } from "../context";
 
-function Question({ ques, activeQuestion, handleNext, handlePrev }) {
+function Question({ key, ques, activeQuestion, handleNext, handlePrev }) {
   const { state } = useAppContext();
   const { questions } = state;
   const { question, correct_answer: correctAnswer } = ques;
   return (
     <Stack
       p={4}
-      sx={{ background: "#fff", color: "#000", borderRadius: "10px" }}
+      sx={{
+        maxWidth: "350px",
+        background: "#fff",
+        color: "#000",
+        borderRadius: "10px",
+      }}
+      component={motion.div}
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-300%" }}
     >
       <Typography>{question}</Typography>
       <Typography>{correctAnswer}</Typography>
