@@ -83,17 +83,18 @@ const Particles = () => {
       requestAnimationFrame(animate);
     };
 
-    resizeHandler(); // Set initial canvas size
+    resizeHandler();
 
     window.addEventListener("resize", resizeHandler);
     window.addEventListener("mousemove", mouseMoveHandler);
+
     animate();
 
     return () => {
       window.removeEventListener("resize", resizeHandler);
       window.removeEventListener("mousemove", mouseMoveHandler);
     };
-  }, []); // Empty dependency array to run the effect only once
+  }, []);
 
   return <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} />;
 };
