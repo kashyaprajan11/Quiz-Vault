@@ -19,10 +19,10 @@ function Questions() {
   };
 
   if (questions.length === 0) {
-    return <Typography>Loading</Typography>;
+    return <Typography sx={{ position: "absolute" }}>Loading</Typography>;
   }
   return (
-    <Stack>
+    <Stack sx={{ position: "absolute" }}>
       <AnimatePresence mode="wait">
         <Question
           key={activeQuestion}

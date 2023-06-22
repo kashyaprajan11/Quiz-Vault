@@ -2,7 +2,7 @@ import { Stack, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import { useAppContext } from "../context";
 
-function Question({ key, ques, activeQuestion, handleNext, handlePrev }) {
+function Question({ ques, activeQuestion, handleNext, handlePrev }) {
   const { state } = useAppContext();
   const { questions } = state;
   const { question, correct_answer: correctAnswer } = ques;
@@ -13,7 +13,9 @@ function Question({ key, ques, activeQuestion, handleNext, handlePrev }) {
         maxWidth: "350px",
         background: "#fff",
         color: "#000",
-        borderRadius: "10px",
+        borderRadius: "1rem",
+        opacity: 0.9,
+        boxShadow: "4px 4px 10px 10px #fff, 4px 4px 10px 10px #0ff",
       }}
       component={motion.div}
       initial={{ x: "100%" }}
