@@ -1,27 +1,8 @@
 import { Stack, Typography, Button, styled } from "@mui/material";
 import { motion } from "framer-motion";
-import { useAppContext } from "../context";
 
-const ChoiceButton = styled(Button)(({ theme }) => ({
-  padding: "1em 2em",
-  border: "1px solid #000",
-  borderRadius: "10px",
-  color: "",
-  position: "relative",
-  "&::after": {
-    content: "''",
-    position: "absolute",
-    inset: 0,
-    width: 0,
-    height: "100%",
-    background: "#0f0",
-    transition: "all 500ms ease-in",
-    zIndex: -1,
-  },
-  "&:hover::after": {
-    width: "100%",
-  },
-}));
+import ChoiceButton from "./ChoiceButton";
+import { useAppContext } from "../context";
 
 function Question({ ques, activeQuestion, handleNext, handlePrev }) {
   const { state } = useAppContext();
@@ -47,8 +28,7 @@ function Question({ ques, activeQuestion, handleNext, handlePrev }) {
       <Typography>{question}</Typography>
       {/* <Typography>{correctAnswer}</Typography> */}
       <Stack spacing={2}>
-        <ChoiceButton>True</ChoiceButton>
-        <ChoiceButton>False</ChoiceButton>
+        <ChoiceButton />
       </Stack>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Button onClick={handlePrev} disabled={activeQuestion === 0}>
