@@ -3,19 +3,31 @@ import { Stack, Typography } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Question from "./Question";
-import { useAppContext } from "../context";
+import { appActionTypes, useAppContext } from "../context";
 
 function Questions() {
-  const { state } = useAppContext();
+  const { state, dispatch } = useAppContext();
   const { questions } = state;
-  const [activeQuestion, setActiveQuestion] = useState(0);
+  const [activeQuestionIdx, setActiveQuestionIdx] = useState(0);
+  const activeQuestion = questions[activeQuestionIdx];
 
   const handlePrev = () => {
-    setActiveQuestion((prev) => prev - 1);
+    setActiveQuestionIdx((prev) => prev - 1);
   };
 
+  console.log(
+    "hello",
+    activeQuestion?.correct_answer,
+    state.userSelectedAnswer
+  );
+  console.log("answer,", state.correctAnswers);
   const handleNext = () => {
-    setActiveQuestion((prev) => prev + 1);
+    setActiveQuestionIdx((prev) => prev + 1);
+    if (activeQuestion.correct_answer === state.userSelectedAnswer) {
+      dispatch({
+        type: appActionTypes.UPDATE_CORRECT_ANSWERS,
+      });
+    }
   };
 
   if (questions.length === 0) {
@@ -25,11 +37,11 @@ function Questions() {
     <Stack sx={{ position: "absolute" }}>
       <AnimatePresence mode="wait">
         <Question
-          key={activeQuestion}
-          ques={questions[activeQuestion]}
+          key={activeQuestionIdx}
+          ques={activeQuestion}
           handleNext={handleNext}
           handlePrev={handlePrev}
-          activeQuestion={activeQuestion}
+          activeQuestionIdx={activeQuestionIdx}
         />
       </AnimatePresence>
     </Stack>

@@ -5,10 +5,14 @@ const AppContext = createContext(null);
 
 const initialState = {
   questions: [],
+  userSelectedAnswer: null, // This is the answer user selected. Here it will be 0 or 1
+  correctAnswers: 0,
 };
 
 const appActionTypes = {
   ADD_QUESTIONS: "ADD_QUESTIONS",
+  UPDATE_CORRECT_ANSWERS: "UPDATE_CORRECT_ANSWERS",
+  UPDATE_USER_SELECTED_ANSWER: "UPDATE_USER_SELECTED_ANSWER",
 };
 
 function appReducer(state = initialState, action) {
@@ -18,6 +22,18 @@ function appReducer(state = initialState, action) {
         ...state,
         questions: action.questions,
       };
+    case appActionTypes.UPDATE_CORRECT_ANSWERS: {
+      return {
+        ...state,
+        correctAnswers: state.correctAnswers + 1,
+      };
+    }
+    case appActionTypes.UPDATE_BTN_INDEX: {
+      return {
+        ...state,
+        userSelectedAnswer: action.answer,
+      };
+    }
   }
 }
 
