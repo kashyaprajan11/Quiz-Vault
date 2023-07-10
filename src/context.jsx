@@ -5,12 +5,10 @@ const AppContext = createContext(null);
 
 const initialState = {
   questions: [],
-  result: 0,
 };
 
 const appActionTypes = {
   ADD_QUESTIONS: "ADD_QUESTIONS",
-  ADD_ANSWER: "ADD_ANSWER",
 };
 
 function appReducer(state = initialState, action) {
@@ -20,18 +18,6 @@ function appReducer(state = initialState, action) {
         ...state,
         questions: action.questions,
       };
-    // case appActionTypes.ADD_ANSWER:
-    //   const { index, answer } = action;
-    //   const updateQuestions = [...state.questions];
-    //   updateQuestions[index].user_answer = answer;
-
-    //   return {
-    //     ...state,
-    //     questions: updateQuestions,
-    //   };
-    default: {
-      return state;
-    }
   }
 }
 
@@ -49,6 +35,7 @@ function AppProvider({ children }) {
     };
     getQustions();
   }, []);
+
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {children}

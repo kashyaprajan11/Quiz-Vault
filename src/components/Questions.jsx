@@ -8,14 +8,14 @@ import { useAppContext } from "../context";
 function Questions() {
   const { state } = useAppContext();
   const { questions } = state;
-  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
+  const [activeQuestion, setActiveQuestion] = useState(0);
 
   const handlePrev = () => {
-    setActiveQuestionIndex((prev) => prev - 1);
+    setActiveQuestion((prev) => prev - 1);
   };
 
   const handleNext = () => {
-    setActiveQuestionIndex((prev) => prev + 1);
+    setActiveQuestion((prev) => prev + 1);
   };
 
   if (questions.length === 0) {
@@ -25,10 +25,11 @@ function Questions() {
     <Stack sx={{ position: "absolute" }}>
       <AnimatePresence mode="wait">
         <Question
-          ques={questions[activeQuestionIndex]}
+          key={activeQuestion}
+          ques={questions[activeQuestion]}
           handleNext={handleNext}
           handlePrev={handlePrev}
-          activeQuestionIndex={activeQuestionIndex}
+          activeQuestion={activeQuestion}
         />
       </AnimatePresence>
     </Stack>

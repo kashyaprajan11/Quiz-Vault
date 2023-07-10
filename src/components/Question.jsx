@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import ChoiceButton from "./ChoiceButton";
 import { useAppContext } from "../context";
 
-function Question({ ques, activeQuestionIndex, handleNext, handlePrev }) {
+function Question({ ques, activeQuestion, handleNext, handlePrev }) {
   const { state } = useAppContext();
   const { questions } = state;
   const { question, correct_answer: correctAnswer } = ques;
@@ -26,15 +26,16 @@ function Question({ ques, activeQuestionIndex, handleNext, handlePrev }) {
       exit={{ x: "-300%" }}
     >
       <Typography>{question}</Typography>
+      {/* <Typography>{correctAnswer}</Typography> */}
       <Stack spacing={2}>
-        <ChoiceButton activeQuestionIndex={activeQuestionIndex} />
+        <ChoiceButton />
       </Stack>
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Button onClick={handlePrev} disabled={activeQuestionIndex === 0}>
+        <Button onClick={handlePrev} disabled={activeQuestion === 0}>
           Previous
         </Button>
         <Button onClick={handleNext}>
-          {activeQuestionIndex === questions.length - 1 ? "Results" : "Next"}
+          {activeQuestion === questions.length - 1 ? "Results" : "Next"}
         </Button>
       </Stack>
     </Stack>

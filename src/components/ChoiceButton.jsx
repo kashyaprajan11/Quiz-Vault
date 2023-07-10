@@ -1,7 +1,7 @@
 import { Stack, Button, styled } from "@mui/material";
 import { useState } from "react";
 
-const CustomizedButton = styled(Button)(({ theme, idx }) => ({
+const CustomizedButton = styled(Button)(({ theme, i }) => ({
   padding: "1em 2em",
   border: "1px solid #000",
   borderRadius: "10px",
@@ -13,7 +13,7 @@ const CustomizedButton = styled(Button)(({ theme, idx }) => ({
     inset: 0,
     width: 0,
     height: "100%",
-    background: idx === 0 ? "#0f0" : "#f00",
+    background: i === 0 ? "#0f0" : "#f00",
     transition: "all 500ms ease-in",
     zIndex: -1,
   },
@@ -22,9 +22,8 @@ const CustomizedButton = styled(Button)(({ theme, idx }) => ({
   },
 }));
 
-function ChoiceButton({ activeQuestionIndex }) {
+function ChoiceButton() {
   const [activeBtnIndex, setActiveBtnIndex] = useState(null);
-
   const buttonType = ["True", "False"];
 
   const handleClick = (i) => () => {
@@ -32,13 +31,14 @@ function ChoiceButton({ activeQuestionIndex }) {
     setActiveBtnIndex(i !== activeBtnIndex ? i : null);
   };
 
+  console.log(activeBtnIndex);
   return (
     <Stack spacing={2}>
       {buttonType.map((btnText, i) => {
         const isActive = activeBtnIndex === i;
         return (
           <CustomizedButton
-            idx={i}
+            i={i}
             key={i}
             sx={{
               background: isActive
