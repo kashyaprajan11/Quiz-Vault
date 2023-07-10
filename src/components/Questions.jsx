@@ -3,6 +3,7 @@ import { Stack, Typography } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Question from "./Question";
+import Results from "./Results";
 import { appActionTypes, useAppContext } from "../context";
 
 function Questions() {
@@ -10,6 +11,7 @@ function Questions() {
   const { questions } = state;
   const [activeQuestionIdx, setActiveQuestionIdx] = useState(0);
   const activeQuestion = questions[activeQuestionIdx];
+  const showResultPage = activeQuestionIdx === questions.length;
 
   const handlePrev = () => {
     setActiveQuestionIdx((prev) => prev - 1);
@@ -36,13 +38,16 @@ function Questions() {
   return (
     <Stack sx={{ position: "absolute" }}>
       <AnimatePresence mode="wait">
-        <Question
-          key={activeQuestionIdx}
-          ques={activeQuestion}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-          activeQuestionIdx={activeQuestionIdx}
-        />
+        {!showResultPage && (
+          <Question
+            key={activeQuestionIdx}
+            ques={activeQuestion}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+            activeQuestionIdx={activeQuestionIdx}
+          />
+        )}
+        {showResultPage && <Results />}
       </AnimatePresence>
     </Stack>
   );
