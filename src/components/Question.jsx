@@ -32,7 +32,7 @@ function Question({ ques, activeQuestionIdx, handleNext, handlePrev }) {
       </Stack>
       <Stack
         direction="row"
-        alignItems="flex-start"
+        alignItems="center"
         justifyContent="space-between"
       >
         <Button onClick={handlePrev} disabled={activeQuestionIdx === 0}>
