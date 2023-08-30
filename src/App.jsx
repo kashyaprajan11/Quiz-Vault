@@ -8,7 +8,7 @@ function App() {
     <Stack
       alignItems="center"
       justifyContent="center"
-      sx={{ minHeight: "100vh", height: "100%" }}
+      sx={{ minHeight: "99vh", height: "100%" }}
     >
       <Questions />
       <Particles />
