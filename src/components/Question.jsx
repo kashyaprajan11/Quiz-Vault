@@ -30,7 +30,11 @@ function Question({ ques, activeQuestionIdx, handleNext, handlePrev }) {
       <Stack spacing={2}>
         <ChoiceButton />
       </Stack>
-      <Stack direction="row" alignItems="center" justifyContent="space-between">
+      <Stack
+        direction="row"
+        alignItems="flex-start"
+        justifyContent="space-between"
+      >
         <Button onClick={handlePrev} disabled={activeQuestionIdx === 0}>
           Previous
         </Button>
